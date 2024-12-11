@@ -1,0 +1,58 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
+
+# Django specific files
+db.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables file
+.env
+
+# Django migrations
+migrations/
+
+# Static files
+/static/
+
+# Media files
+/media/
+
+# Local configuration files
+*.env
+*.local
+
+# Virtual environment
+venv/
+env/
+.venv/
+.env/
+
+# IDEs and text editors
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+.coverage
+*.cover
+*.hypothesis/
+
+# Python virtual environment
+venv/
+
+# Pytest and Django test files
+test_*.py
