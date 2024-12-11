@@ -8,18 +8,29 @@ const HomePage = () => {
 
   const handleBooking = async (bookingData: any) => {
     try {
-      const response = await fetch("http://localhost:8000/appointements/book/", {
+      const response = await fetch("https://barbershop-site.onrender.com/appointements/book/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(bookingData),
       });
-      const data = await response.json();
-      if (response.ok) {
+  
+      // Check if the response is OK and if the content type is JSON
+      if (!response.ok) {
+        setErrorMessage("Error booking appointment. Please try again.");
+        setSuccessMessage("");
+        return;
+      }
+  
+      const contentType = response.headers.get("Content-Type");
+  
+      if (contentType && contentType.includes("application/json")) {
+        const data = await response.json();
         setSuccessMessage(data.message); // Show success message
         setErrorMessage("");
         setTimeout(() => setSuccessMessage(""), 5000); // Hide after 5 seconds
       } else {
-        setErrorMessage("Error booking appointment. Please try again.");
+        // Handle unexpected content type
+        setErrorMessage("Unexpected response format from server.");
         setSuccessMessage("");
       }
     } catch (error) {
@@ -28,6 +39,7 @@ const HomePage = () => {
       setSuccessMessage("");
     }
   };
+  
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen text-white overflow-hidden overflow-y-hidden">

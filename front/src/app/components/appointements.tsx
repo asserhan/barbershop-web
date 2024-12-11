@@ -18,7 +18,7 @@ const AppointmentList = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await fetch("http://localhost:8000/appointements/book/");
+      const response = await fetch("https://barbershop-site.onrender.com/appointements/book/");
       const data = await response.json();
       setAppointments(data.appointements);
     } catch (error) {
@@ -29,7 +29,7 @@ const AppointmentList = () => {
 
   const deleteAppointment = async (id: number) => {
     try {
-      const response = await fetch("http://localhost:8000/appointements/book/", {
+      const response = await fetch("https://barbershop-site.onrender.com/appointements/book/", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
